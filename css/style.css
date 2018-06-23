@@ -4,6 +4,9 @@
   box-sizing: border-box;
   transition: all 0.4s ease;
 }
+button:active {
+  outline: none;
+}
 .code-wrap {
   display: block;
   padding: 10px;
@@ -17,4 +20,26 @@
   height: 50vh;
   align-items: center;
   justify-content: center;
+}
+.buttons {
+  position: fixed;
+  right: 20px;
+  top: 10px;
+}
+.buttons button {
+  display: block;
+  padding: 2px 6px;
+  margin-top: 10px;
+  width: 60px;
+  line-height: 18px;
+  font-size: 14px;
+  border-radius: 4px;
+  background-color: #ededed;
+  border: none;
+  cursor: pointer;
+}
+.buttons button.active {
+  background: #3c95dc;
+  color: #fff;
+  box-shadow: 1px 1px 6px #4c4c4c;
 }
