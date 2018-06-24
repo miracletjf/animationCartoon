@@ -146,55 +146,8 @@ let code = `/* 我们来画一个皮卡丘 */
   height: 100vh;
 }
 /* 好了，一只皮卡丘画好了 */
-/* 送给你~ */`
+/* 送给你~ */`;
 
-let styleWrap = document.querySelector('#styleWrap');
-let codeWrap = document.querySelector('#codeWrap');
-let $buttons = $('.buttons button');
-let speed = 50;
-let timer;
-let n = 0;
-
-
-init();
-
-function init(){
-  $buttons.eq(1).addClass('active');
-  execCodeingAnimation();
-  bindEvents();
-}
-
-function execCodeingAnimation(){
-  timer = setTimeout(function run(){
-    n++;
-    let codeNow = code.slice(0,n);
-    codeWrap.innerHTML = codeNow;
-    styleWrap.innerHTML = codeNow;
-    codeWrap.scrollTop = codeWrap.scrollHeight;
-    if(n<code.length){
-      setTimeout(run,speed);
-    }
-  },speed)
-}
-
-function bindEvents(){
-  $buttons.on('click',function(e){ 
-    let type = $(this).text();
-    $(this).addClass('active').siblings().removeClass('active');
-    controlSpeed(type);
-  })
-}
-
-function controlSpeed(type){
-  switch (type){
-    case 'slow': 
-      speed = 80;
-      break;
-    case 'default':
-      speed = 40;
-      break;
-    case 'fast':
-      speed = 20;
-      break;
-  }
-}
+let pikachu = new DrawAnimation(code);
+console.log(pikachu);
+pikachu.init();
