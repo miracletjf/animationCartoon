@@ -149,5 +149,7 @@ let code = `/* 我们来画一个皮卡丘 */
 /* 送给你~ */`;
 
 let pikachu = new DrawAnimation(code);
-console.log(pikachu);
-pikachu.init();
+
+pikachu.init(function(){
+  $('#operator').hide();
+});

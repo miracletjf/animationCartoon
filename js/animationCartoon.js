@@ -10,10 +10,11 @@ function DrawAnimation(code){
 
 DrawAnimation.prototype = {
   constructor: DrawAnimation,
-  init: function(){
+  init: function(callback){
     this.$buttons.eq(1).addClass('active');
     this.execCodeingAnimation();
     this.bindEvents();
+    this.done = callback;
   },
   execCodeingAnimation: function(){
     this.timer = setTimeout(function run(){
@@ -22,8 +23,12 @@ DrawAnimation.prototype = {
       this.codeWrap.innerHTML = codeNow;
       this.styleWrap.innerHTML = codeNow;
       this.codeWrap.scrollTop = this.codeWrap.scrollHeight;
-      if(this.n<this.code.length){
+      if(this.n < this.code.length){
         setTimeout(run.bind(this),this.speed);
+      } else {
+        if(typeof this.done === 'function'){
+          this.done.call(this)
+        }
       }
     }.bind(this),this.speed)
   },
